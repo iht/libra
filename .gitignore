@@ -19,6 +19,7 @@ project/plugins/project/
 # Ensime specific
 .ensime
 .ensime_cache/
+ensime.sbt
 
 # Unix specific
 *~
