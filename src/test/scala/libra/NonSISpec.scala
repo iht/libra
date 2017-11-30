@@ -8,7 +8,7 @@ import libra.si._
 import org.scalatest._
 
 
-class NonSISpec extends WordSpec {
+class NonSISpec extends WordSpec with Matchers {
 
   "degree" should {
     "show" in {
@@ -26,6 +26,10 @@ class NonSISpec extends WordSpec {
     "radian value" in {
       assert(180.0.degree.to[Radian].value === pi)
     }
+
+    "gradian value" in {
+      assert(0.9.degree.to[Gradian].value === 1.0)
+    }
   }
 
   "arcminute" should {
@@ -40,6 +44,10 @@ class NonSISpec extends WordSpec {
     "arcsecond value" in {
       assert(2.0.arcminute.to[Arcsecond].value === 120.0)
     }
+
+    "gradian value" in {
+      assert(54.0.arcminute.to[Gradian].value === 1.0)
+    }
   }
 
   "arcsecond" should {
@@ -53,6 +61,10 @@ class NonSISpec extends WordSpec {
 
     "arcminute value" in {
       assert(120.0.arcsecond.to[Arcminute].value === 2.0)
+    }
+
+    "gradian value" in {
+      assert(3240.0.arcsecond.to[Gradian].value === 1.0)
     }
   }
 
@@ -121,6 +133,32 @@ class NonSISpec extends WordSpec {
 
     "arcsecond value" in {
       assert(pi.radian.to[Arcsecond].value === 648000.0)
+    }
+
+    "gradian value" in {
+      assert(pi.radian.to[Gradian].value === 200.0)
+    }
+  }
+
+  "gradians" should {
+    "show" in {
+      assert(2.gradian.show === "2 gon [∠]")
+    }
+
+    "degree value" in {
+      assert(10.0.gradian.to[Degree].value === 9.0)
+    }
+
+    "arcminute value" in {
+      assert(1.0.gradian.to[Arcminute].value === 54.0)
+    }
+
+    "arcsecond value" in {
+      assert(1.0.gradian.to[Arcsecond].value === 3240.0)
+    }
+
+    "radian value" in {
+      assert(200.0.gradian.to[Radian].value === pi +- 0.0001)
     }
   }
 }
